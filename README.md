@@ -11,9 +11,10 @@ Templates to bootstrap projects for different languages and contexts.
 
 The tooling, frameworks, libraries status quo for most technologies is frequently in flux.
 
-On the one hand, this can feel empowering and thought provoking, providing new ways
+On the one ✋, this can feel empowering and thought provoking, providing new ways
 of thinking about and (hopefully) solving a given problem.
-On the other, it can feel like a distraction from actually tackling the business
+
+On the other ✋, it can feel like a distraction from actually tackling the business
 problem in front of you, not to mention a little tiring.
 
 The intended purpose of this repo is to get these two hands high-fiving! 🫸💥🫷
