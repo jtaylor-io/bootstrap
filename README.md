@@ -20,5 +20,5 @@ The tooling, frameworks, libraries status quo for most technologies is frequentl
 
 - The intended purpose of this repo is to get these two hands high-fiving 🫸💥🫷
 
-I want this to be a place to track the evolution of project templates I find
+In short, I want this to be a place to track the evolution of project templates I find
 useful to solve actual problems.
