@@ -22,3 +22,7 @@ The tooling, frameworks, libraries status quo for most technologies is frequentl
 
 I want this to be a place to track the evolution of project templates I find
 useful to solve actual problems.
+
+## Top-level Index
+
+- [Terraform](./terraform/)
