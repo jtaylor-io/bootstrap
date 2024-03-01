@@ -78,31 +78,38 @@ terraform init -migrate-state # answer "yes" when prompted to copy state to new 
 
 #### Destroy Bootstrap Resources
 
-In order to cleanly remove all bootstrapped resources, the state file needs to be
-migrated from S3 to a local copy. This allows a terraform destroy to be issued
-to remove the bootstrapped resources. Instructions included in a comment in the
-generated terraform-backend.tf file are repeated below:
+- In order to cleanly remove all bootstrapped resources, the state file needs to be
+  migrated from S3 to a local copy.
+- This allows a terraform destroy to be issued to remove the bootstrapped resources.
+
+###### Update Terraform backend config
 
 ```shell
-#       If you need to migrate the Terraform state file back to being local
-#       e.g. if you want to remove the Terraform S3 Backend bootstrap resources,
-#       then remove the terraform backend s3 block below and uncomment the terraform
-#       backend local block below. Then run:
-#
-#       $> terraform init -migrate-state # answer yes to prompt
-#
-#       If you are trying to destroy the bootstrapped resources, you will need
-#       to MANUALLY REMOVE any state files (including any old versions)
-#       left in the state bucket (either via AWS console or cli). This step has
-#       been deliberately left manual, due to the severity of the action.
-#       Once the state bucket is empty, you can safely destroy the bootstrap
-#       resources using the command below:
-#
-#       $> terraform destroy # answer yes to prompt
-#
-# terraform {
-#   backend \"local\" {
-#     path = \"terraform.tfstate\"
-#   }
-# }
+cat << EOF > terraform-backend.tf
+terraform {
+  backend "local" {
+    path = "terraform.tfstate"
+  }
+}
+EOF
+```
+
+```shell
+terraform init -migrate-state # answer yes to prompt
+```
+
+##### Manually Remove State Files from S3 bucket
+
+If you are trying to destroy the bootstrapped resources, you will need
+to MANUALLY REMOVE any state files (including any old versions)
+left in the state bucket (either via AWS console or cli). This step has
+been deliberately left manual, due to the severity of the action.
+
+##### Destroy Resources
+
+Once the state bucket is empty, you can safely destroy the bootstrap
+resources using the command below:
+
+```shell
+terraform destroy # answer yes to prompt
 ```
