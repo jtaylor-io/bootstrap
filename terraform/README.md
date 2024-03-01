@@ -113,5 +113,5 @@ Once the state bucket is empty, you can safely destroy the bootstrap
 resources using the command below:
 
 ```shell
-terraform destroy # answer yes to prompt
+terraform destroy
 ```
