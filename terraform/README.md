@@ -2,7 +2,7 @@
 
 <img src="../images/chicken-egg.jpg" alt="picture of three chicks and two eggs" width="400"/>
 
-## How to: Manage AWS infrastructure using Terraform
+## How to: Manage AWS Infrastructure using Terraform
 
 ### Setup [Terraform (🐔) S3 Backend](https://developer.hashicorp.com/terraform/language/settings/backends/s3) using Terraform (🥚)
 
@@ -23,19 +23,19 @@ accompanying instructions will help setup the required AWS resources:
 
 #### Provision Resources
 
-##### Initialise terraform
+##### Initialise Terraform
 
 ```shell
 terraform init
 ```
 
-##### Apply terraform
+##### Apply Terraform
 
 ```shell
 terraform apply
 ```
 
-##### Input AWS account id
+##### Input AWS Account Id
 
 ```shell
 var.aws_account_id
@@ -44,7 +44,7 @@ var.aws_account_id
   Enter a value: # TODO: enter your account id here when prompted
 ```
 
-##### Review and approve plan
+##### Review and Approve Plan
 
 ```shell
 ... <Terraform Plan omitted> ...
@@ -62,13 +62,13 @@ Do you want to perform these actions?
 Apply complete! Resources: 5 added, 0 changed, 0 destroyed.
 ```
 
-##### Create Terraform backend config
+##### Create Terraform Backend Config
 
 ```shell
 ./make-s3-backend-hcl.sh > terraform-backend.tf
 ```
 
-##### Migrate local Terraform state file to S3
+##### Migrate Local Terraform State File to S3
 
 ```shell
 terraform init -migrate-state # answer "yes" when prompted to copy state to new backend
@@ -82,7 +82,7 @@ terraform init -migrate-state # answer "yes" when prompted to copy state to new 
   migrated from S3 to a local copy.
 - This allows a terraform destroy to be issued to remove the bootstrapped resources.
 
-###### Update Terraform backend config
+##### Update Terraform Backend Config
 
 ```shell
 cat << EOF > terraform-backend.tf
@@ -94,11 +94,13 @@ terraform {
 EOF
 ```
 
+##### Migrate S3 State File to a Local Copy
+
 ```shell
 terraform init -migrate-state # answer yes to prompt
 ```
 
-##### Manually Remove State Files from S3 bucket
+##### Manually Remove State Files from S3 Bucket
 
 If you are trying to destroy the bootstrapped resources, you will need
 to MANUALLY REMOVE any state files (including any old versions)
