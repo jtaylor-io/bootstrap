@@ -26,7 +26,6 @@ terraform output -json | jq -r \
 
 terraform {
     backend \"s3\" {
-      profile        = \"default\"
       region         = \"\(.aws_region.value)\"
       bucket         = \"\(.s3_bucket_name.value)\"
       key            = \"\(if .s3_key_prefix.value then .s3_key_prefix.value + "/terraform.tfstate" else "terraform.tfstate" end)\"
